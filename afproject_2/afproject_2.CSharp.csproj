@@ -206,8 +206,17 @@
     <Compile Include="Assets\NGUI\Scripts\UI\UITexture.cs" />
     <Compile Include="Assets\NGUI\Scripts\UI\UITooltip.cs" />
     <Compile Include="Assets\NGUI\Scripts\UI\UIViewport.cs" />
+    <Compile Include="Assets\Project_Root\Scripts\Gui\Entity\Gui_dummy.cs" />
+    <Compile Include="Assets\Project_Root\Scripts\Gui\GuiBase.cs" />
+    <Compile Include="Assets\Project_Root\Scripts\Gui\GuiManager.cs" />
+    <Compile Include="Assets\Project_Root\Scripts\Gui\GuiSpawnerPool.cs" />
+    <Compile Include="Assets\Project_Root\Scripts\InGame\ContactObject_Enemy.cs" />
+    <Compile Include="Assets\Project_Root\Scripts\InGame\EnemyController.cs" />
     <Compile Include="Assets\Project_Root\Scripts\InGame\PlayerController_2d.cs" />
     <Compile Include="Assets\Project_Root\Scripts\InGame\Player_Bolt.cs" />
+    <Compile Include="Assets\Project_Root\Scripts\util\DelayDestoryToPool.cs" />
+    <Compile Include="Assets\Project_Root\Scripts\util\SpawnerPool.cs" />
+    <Compile Include="Assets\SimpleJSON\plugins\SimpleJSON.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Demigiant\DOTween\DOTween.XML" />

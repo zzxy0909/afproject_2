@@ -9,33 +9,22 @@ public class Player_Bolt : MonoBehaviour {
 
     Rigidbody2D _Rigidbody2D;
 
-    void Start()
+    void OnEnable()
     {
-        _Rigidbody2D = GetComponent<Rigidbody2D>();
-
-        //if (_isLocalMover == false)
-        //{
-        //    if (_isMulti == false)
-        //    {
-        //        Vector2 movement = new Vector2(1, 0);
-        //        _Rigidbody2D.velocity = movement * speed;
-        //    }
-        //    else
-        //    {
-        //        Vector2 movement = new Vector2(_speedX, _speedY);
-        //        _Rigidbody2D.velocity = movement;
-        //    }
-        //}
-        //else
-        //{
-
-        //}
+        if(_Rigidbody2D == null)
+            _Rigidbody2D = GetComponent<Rigidbody2D>();
+        _Rigidbody2D.velocity = Vector2.zero;
+        _IsPlayMove = false;
 
         if (_AutoStart == true)
         {
             PlayMove();
         }
     }
+    //void OnDestory()
+    //{
+    //    _IsPlayMove = false;
+    //}
     public void PlayMove()
     {
         Invoke("SetPlayMove", _StartDelay);
@@ -43,16 +32,16 @@ public class Player_Bolt : MonoBehaviour {
     void SetPlayMove()
     {
         _IsPlayMove = true;
+        _Rigidbody2D.velocity = (new Vector2(0, 1) * speed);
     }
 
-    void Update()
-    {
-        if (_IsPlayMove == true)
-        {
-            //Vector3 move_dir = new Vector3(1, 0, 0);
-            //transform.localPosition = transform.localPosition + (move_dir * speed * Time.deltaTime);
-
-            _Rigidbody2D.velocity = (new Vector2(0, 1) * speed);
-        }
-    }
+    //void Update()
+    //{
+    //    if (_IsPlayMove == true)
+    //    {
+    //        //Vector3 move_dir = new Vector3(1, 0, 0);
+    //        //transform.localPosition = transform.localPosition + (move_dir * speed * Time.deltaTime);
+            
+    //    }
+    //}
 }

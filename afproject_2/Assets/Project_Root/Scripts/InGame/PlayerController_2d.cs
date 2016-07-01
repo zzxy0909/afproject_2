@@ -9,7 +9,11 @@ public class wt_Boundary
 
 public class PlayerController_2d : MonoBehaviour
 {
-	public float m_speed = 1.5f;
+    public GameObject m_pfPlayerBolt;
+    public float m_boltTime = 1f;
+    public bool m_isAutoShot = true;
+
+    public float m_speed = 1.5f;
 	public wt_Boundary m_boundary;
 
     Rigidbody2D _Rigidbody2D;
@@ -19,10 +23,24 @@ public class PlayerController_2d : MonoBehaviour
         _Rigidbody2D = GetComponent<Rigidbody2D>();
         _Trans = this.transform;
     }
-	void Update ()
+    void PlayShot()
+    {
+        SpawnerPool.Spawn(m_pfPlayerBolt, _Trans.position, _Trans.rotation);
+
+    }
+
+    float _nextFire = 0;
+    void Update ()
 	{
-		
-        if (Input.GetMouseButtonDown(0))
+        if (Time.time > _nextFire
+            && m_isAutoShot == true
+            )
+        {
+            _nextFire = Time.time + m_boltTime;
+            PlayShot();
+        }
+
+            if (Input.GetMouseButtonDown(0))
         {
             _isDrag = true;
             _oldMousePos = Input.mousePosition;
@@ -35,7 +53,6 @@ public class PlayerController_2d : MonoBehaviour
     
     bool _isDrag = false;
     Vector2 _oldMousePos = Vector2.zero;
-
     public float moveHorizontal;
     public float moveVertical;
     float move_ratioX = 1; // (0.16f * 1.5f);
